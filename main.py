@@ -13,6 +13,13 @@ gold = load_texture('gold.png')
 sky = load_texture('sky.png')
 sky2 = load_texture('sky2.png')
 sky3 = load_texture('sky3.png')
+basketball = load_texture('basketball.png')
+soccer = load_texture('soccer.png')
+marble = load_texture('marble.png')
+lapiz = load_texture('lapiz.png')
+lava = load_texture('lava.png')
+warriors = load_texture('warriors.png')
+
 punch = Audio('sounds/punch.wav', loop = False, autoplay = False)
 
 
@@ -31,6 +38,12 @@ def update():
     if held_keys['4']: block_pick = 4
     if held_keys['5']: block_pick = 5
     if held_keys['6']: block_pick = 6
+    if held_keys['7']: block_pick = 7
+    if held_keys['8']: block_pick = 8
+    if held_keys['9']: block_pick = 9
+    if held_keys['0']: block_pick = 0
+    if held_keys['l']: block_pick = 10
+    if held_keys['y']: block_pick = 11
 class Block(Button):
     def __init__(self, position = (0,0,0), texture = grass):
         super().__init__(parent = scene, position = position, model = 'block', origin_y = 0.5, texture = texture, color = color.color(0, 0, random.uniform(0.8, 1)), scale = 0.5)
@@ -45,6 +58,13 @@ class Block(Button):
                 if block_pick == 4: block = Block(position = self.position + mouse.normal, texture = dirt)
                 if block_pick == 5: block = Block(position = self.position + mouse.normal, texture = diamond)
                 if block_pick == 6: block = Block(position = self.position + mouse.normal, texture = gold)
+                if block_pick == 7: block = Sphere(position = self.position + mouse.normal, texture = basketball)
+                if block_pick == 8: block = Sphere(position = self.position + mouse.normal, texture = soccer)
+                if block_pick == 9: block = Block(position = self.position + mouse.normal, texture = marble)
+                if block_pick == 0: block = Block(position = self.position + mouse.normal, texture = lapiz)
+                if block_pick == 10: block = Block(position = self.position + mouse.normal, texture = lava)
+                if block_pick == 11: block = Block(position = self.position + mouse.normal, texture = warriors)
+
 
             if key == 'right mouse down':
                 punch.play()
